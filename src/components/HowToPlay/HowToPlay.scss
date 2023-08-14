@@ -1,0 +1,13 @@
+.howToPlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 13px;
+  max-width: 474px;
+  padding: 0 15px;
+  margin: 10px auto;
+
+  span {
+    font-weight: 600;
+  }
+}

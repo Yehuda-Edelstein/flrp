@@ -1,0 +1,7 @@
+@import "./colors.scss";
+
+@function font-sizer($container-width, $max-font-size) {
+  $base-font-size: 1.8;
+  $vw-percentage: calc($container-width / $base-font-size) * 1vw;
+  @return min($max-font-size, $vw-percentage);
+}

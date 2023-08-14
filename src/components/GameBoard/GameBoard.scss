@@ -1,0 +1,104 @@
+@import "./../../sass/main.scss";
+
+.gContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  .gBoard {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: $board-bg-color;
+    border: 2px solid $square-border-color;
+    border-radius: 8px;
+
+    .gRow {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .gSquare,
+      .gFilled {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid $square-border-color;
+        max-width: 45px;
+        max-height: 45px;
+        min-width: 28px;
+        min-height: 28px;
+        width: 8vw;
+        height: 8vw;
+        color: $square-text-color;
+        font-weight: 600;
+        font-size: font-sizer(8, 20px);
+        // disable highlighting
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        .gFaded {
+          color: white;
+          opacity: 0.5;
+        }
+      }
+
+      .gFilled {
+        background-color: $square-filled;
+      }
+
+      .currentSquare {
+        background-color: $current-square;
+      }
+
+      .gAllowed {
+        color: rgba(255, 255, 255, 0.5);
+        background-color: $square-allowed;
+
+        .allowedOverlay {
+          background-color: $square-allowed;
+          opacity: 0.3;
+          position: absolute;
+          max-width: calc(45px * 2);
+          max-height: calc(45px * 2);
+          min-width: calc(2.38px * 2);
+          min-height: calc(2.38px * 2);
+          width: calc(8vw * 2);
+          height: calc(8vw * 2);
+          border-radius: 16px;
+          box-shadow: 0 0 20px rgba(204, 103, 154, 0.5),
+            0 0 20px rgba(204, 103, 154, 0.5), 0 0 20px rgba(204, 103, 154, 0.5),
+            0 0 20px rgba(204, 103, 154, 0.5);
+          &:hover {
+            cursor: pointer;
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    :first-child {
+      :first-child {
+        border-top-left-radius: 5.5px;
+      }
+      :last-child {
+        border-top-right-radius: 5.5px;
+      }
+    }
+
+    :nth-child(10) {
+      :first-child {
+        border-bottom-left-radius: 5.5px;
+      }
+      :last-child {
+        border-bottom-right-radius: 5.5px;
+      }
+    }
+  }
+}
