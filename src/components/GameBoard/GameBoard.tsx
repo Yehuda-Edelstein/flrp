@@ -10,10 +10,12 @@ import "./GameBoard.scss";
 const startingPositions = getStartingPositions().basic;
 
 const GameBoard: FunctionComponent = () => {
+  const dimension = 10;
   const [gameOver, setGameOver] = useState(false);
   const [didWin, setDidWin] = useState(false);
 
-  const [board, setBoard] = useState(getBoard());
+  const [board, setBoard] = useState(getBoard(dimension));
+
   const size = board.length;
 
   const [count, setCount] = useState(0);
@@ -28,6 +30,7 @@ const GameBoard: FunctionComponent = () => {
     }
     setDidWin(count === 100);
     setGameOver(true);
+    console.log(board);
   }, [allowedSquares, count]);
 
   function updateBoard(board: string[][], count: number, i: number, j: number) {
@@ -37,7 +40,7 @@ const GameBoard: FunctionComponent = () => {
   }
 
   function newGame() {
-    setBoard(getBoard());
+    setBoard(getBoard(dimension));
     setGameOver(false);
     setCount(0);
     setAllowedSquares(startingPositions);
@@ -81,7 +84,12 @@ const GameBoard: FunctionComponent = () => {
           );
         })}
         {gameOver && (
-          <GameOver didWin={didWin} newGame={newGame} count={count} />
+          <GameOver
+            didWin={didWin}
+            newGame={newGame}
+            count={count}
+            outOf={Math.pow(dimension, 2)}
+          />
         )}
       </div>
     </div>

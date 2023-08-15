@@ -5,12 +5,14 @@ interface IGameOverProps {
   didWin: boolean;
   newGame: () => void;
   count: number;
+  outOf: number;
 }
 
 const GameOver: FunctionComponent<IGameOverProps> = ({
   didWin,
   newGame,
   count: score,
+  outOf,
 }) => {
   const [showModal, setShowModal] = useState(true);
   return (
@@ -20,13 +22,17 @@ const GameOver: FunctionComponent<IGameOverProps> = ({
           {!didWin ? (
             <>
               <div>game over</div>
-              <span>{score}/100</span>
+              <span>
+                {score}/{outOf}
+              </span>
               <span>better luck next time</span>
             </>
           ) : (
             <>
               <div>you won</div>
-              <span>{score}/100</span>
+              <span>
+                {score}/{outOf}
+              </span>
               <span>congrats</span>
             </>
           )}
