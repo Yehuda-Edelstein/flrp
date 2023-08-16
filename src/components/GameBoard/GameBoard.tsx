@@ -33,9 +33,8 @@ const GameBoard: FunctionComponent<IGameBoardProps> = ({
         return;
       }
     }
-    setDidWin(count === 100);
+    setDidWin(count === Math.pow(size, 2));
     setGameOver(true);
-    console.log(board);
   }, [allowedSquares, count]);
 
   function updateBoard(board: string[][], count: number, i: number, j: number) {
