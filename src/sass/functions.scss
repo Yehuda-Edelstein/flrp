@@ -5,3 +5,18 @@
   $vw-percentage: calc($container-width / $base-font-size) * 1vw;
   @return min($max-font-size, $vw-percentage);
 }
+
+@function calculate-square-size($min-size, $max-size, $num-squares) {
+  $available-width: 100vw - ($num-squares - 1); // Subtract 1px for the gaps between squares
+  $square-size: $available-width / $num-squares;
+
+  @if $square-size > $max-size {
+    $square-size: $max-size;
+  }
+
+  @if $square-size < $min-size {
+    $square-size: $min-size;
+  }
+
+  @return $square-size;
+}

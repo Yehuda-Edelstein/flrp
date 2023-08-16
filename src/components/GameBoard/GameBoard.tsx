@@ -1,22 +1,27 @@
 import { FunctionComponent, useEffect, useState } from "react";
-import getBoard from "./getBoard";
-import getAllowedSquares from "./getAllowedSquares";
-import getCoordinatesString from "./getCoordinatesString";
-import { getStartingPositions } from "./getStartingPositions";
+import getBoard from "./../utils/getBoard";
+import getAllowedSquares from "./../utils/getAllowedSquares";
+import getCoordinatesString from "./../utils/getCoordinatesString";
+import { getStartingPositions } from "../utils/getStartingPositions";
 import GameOver from "../GameOver/GameOver";
 
 import "./GameBoard.scss";
 
-const startingPositions = getStartingPositions().basic;
+interface IGameBoardProps {
+  className: string;
+  dimension: number;
+}
 
-const GameBoard: FunctionComponent = () => {
-  const dimension = 10;
+const GameBoard: FunctionComponent<IGameBoardProps> = ({
+  className,
+  dimension: size,
+}) => {
+  const startingPositions = getStartingPositions().basic;
+
   const [gameOver, setGameOver] = useState(false);
   const [didWin, setDidWin] = useState(false);
 
-  const [board, setBoard] = useState(getBoard(dimension));
-
-  const size = board.length;
+  const [board, setBoard] = useState(getBoard(size));
 
   const [count, setCount] = useState(0);
   const [allowedSquares, setAllowedSquares] =
@@ -40,23 +45,25 @@ const GameBoard: FunctionComponent = () => {
   }
 
   function newGame() {
-    setBoard(getBoard(dimension));
+    setBoard(getBoard(size));
     setGameOver(false);
     setCount(0);
     setAllowedSquares(startingPositions);
   }
 
   return (
-    <div className="gContainer">
-      <div className="gBoard">
+    <div className="gameBoardContainer">
+      <div className={`gameBoard ${className}`}>
         {board.map((row, i) => {
           return (
-            <div key={i} className="gRow">
+            <div key={i} className="gameRow">
               {row.map((square, j) => {
                 return allowedSquares.includes(getCoordinatesString(i, j)) ? (
                   <div
                     key={j}
-                    className={!square ? "gSquare gAllowed" : "gFilled"}
+                    className={
+                      !square ? "gameSquare gameAllowed" : "gameFilled"
+                    }
                     onClick={() => {
                       if (!square) {
                         setBoard(updateBoard(board, count + 1, i, j));
@@ -69,13 +76,13 @@ const GameBoard: FunctionComponent = () => {
                     <span>{square}</span>
                   </div>
                 ) : !square ? (
-                  <div key={j} className="gSquare"></div>
+                  <div key={j} className="gameSquare"></div>
                 ) : square === count.toString() ? (
-                  <div key={j} className="gSquare currentSquare">
+                  <div key={j} className="gameSquare currentSquare">
                     {square}
                   </div>
                 ) : (
-                  <div key={j} className="gFilled">
+                  <div key={j} className="gameFilled">
                     {square}
                   </div>
                 );
@@ -88,7 +95,7 @@ const GameBoard: FunctionComponent = () => {
             didWin={didWin}
             newGame={newGame}
             count={count}
-            outOf={Math.pow(dimension, 2)}
+            outOf={Math.pow(size, 2)}
           />
         )}
       </div>

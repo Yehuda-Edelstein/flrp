@@ -1,0 +1,28 @@
+.gameOptions {
+  margin: 0 0 40px 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  // disable highlighting
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  .react-tabs__tab {
+    margin: 0 45px;
+    outline: none;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+  .react-tabs__tab--selected {
+    text-decoration: underline;
+  }
+}

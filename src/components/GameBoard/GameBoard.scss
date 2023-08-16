@@ -1,12 +1,114 @@
 @import "./../../sass/main.scss";
 
-.gContainer {
+.gameBoardContainer {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
 
-  .gBoard {
+  .x6 {
+    .gameRow {
+      .gameSquare,
+      .gameFilled {
+        width: 13vw;
+        height: 13vw;
+        max-width: 75px;
+        max-height: 75px;
+        min-width: 45px;
+        min-height: 45px;
+        font-size: font-sizer(10, 30px);
+      }
+
+      .gameAllowed {
+        .allowedOverlay {
+          max-width: calc(60px * 2);
+          max-height: calc(60px * 2);
+          min-width: calc(2.38px * 2);
+          min-height: calc(2.38px * 2);
+          width: calc(11vw * 2);
+          height: calc(11vw * 2);
+        }
+      }
+    }
+    :nth-child(6) {
+      :first-child {
+        border-bottom-left-radius: 5.5px;
+      }
+      :last-child {
+        border-bottom-right-radius: 5.5px;
+      }
+    }
+  }
+
+  .x8 {
+    .gameRow {
+      .gameSquare,
+      .gameFilled {
+        width: 10vw;
+        height: 10vw;
+        max-width: 55px;
+        max-height: 55px;
+        min-width: 35px;
+        min-height: 35px;
+        font-size: font-sizer(10, 23px);
+      }
+
+      .gameAllowed {
+        .allowedOverlay {
+          max-width: calc(50px * 2);
+          max-height: calc(50px * 2);
+          min-width: calc(2.38px * 2);
+          min-height: calc(2.38px * 2);
+          width: calc(10vw * 2);
+          height: calc(10vw * 2);
+        }
+      }
+    }
+    :nth-child(8) {
+      :first-child {
+        border-bottom-left-radius: 5.5px;
+      }
+      :last-child {
+        border-bottom-right-radius: 5.5px;
+      }
+    }
+  }
+
+  .x10 {
+    .gameRow {
+      .gameSquare,
+      .gameFilled {
+        width: 8vw;
+        height: 8vw;
+        max-width: 45px;
+        max-height: 45px;
+        min-width: 28px;
+        min-height: 28px;
+        font-size: font-sizer(8, 20px);
+      }
+
+      .gameAllowed {
+        .allowedOverlay {
+          max-width: calc(45px * 2);
+          max-height: calc(45px * 2);
+          min-width: calc(2.38px * 2);
+          min-height: calc(2.38px * 2);
+          width: calc(8vw * 2);
+          height: calc(8vw * 2);
+        }
+      }
+    }
+    :nth-child(10) {
+      :first-child {
+        border-bottom-left-radius: 5.5px;
+      }
+      :last-child {
+        border-bottom-right-radius: 5.5px;
+      }
+    }
+  }
+
+  .gameBoard {
     position: relative;
     display: flex;
     justify-content: center;
@@ -14,27 +116,22 @@
     background-color: $board-bg-color;
     border: 2px solid $square-border-color;
     border-radius: 8px;
+    max-width: 500px;
 
-    .gRow {
+    .gameRow {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
 
-      .gSquare,
-      .gFilled {
+      .gameSquare,
+      .gameFilled {
         display: flex;
         justify-content: center;
         align-items: center;
         border: 2px solid $square-border-color;
-        max-width: 45px;
-        max-height: 45px;
-        min-width: 28px;
-        min-height: 28px;
-        width: 8vw;
-        height: 8vw;
+
         color: $square-text-color;
         font-weight: 600;
-        font-size: font-sizer(8, 20px);
         // disable highlighting
         -webkit-touch-callout: none;
         -webkit-user-select: none;
@@ -49,7 +146,7 @@
         }
       }
 
-      .gFilled {
+      .gameFilled {
         background-color: $square-filled;
       }
 
@@ -57,7 +154,7 @@
         background-color: $current-square;
       }
 
-      .gAllowed {
+      .gameAllowed {
         color: rgba(255, 255, 255, 0.5);
         background-color: $square-allowed;
 
@@ -65,12 +162,7 @@
           background-color: $square-allowed;
           opacity: 0.3;
           position: absolute;
-          max-width: calc(45px * 2);
-          max-height: calc(45px * 2);
-          min-width: calc(2.38px * 2);
-          min-height: calc(2.38px * 2);
-          width: calc(8vw * 2);
-          height: calc(8vw * 2);
+
           border-radius: 16px;
           box-shadow: 0 0 20px rgba(204, 103, 154, 0.5),
             0 0 20px rgba(204, 103, 154, 0.5), 0 0 20px rgba(204, 103, 154, 0.5),
@@ -89,15 +181,6 @@
       }
       :last-child {
         border-top-right-radius: 5.5px;
-      }
-    }
-
-    :nth-child(10) {
-      :first-child {
-        border-bottom-left-radius: 5.5px;
-      }
-      :last-child {
-        border-bottom-right-radius: 5.5px;
       }
     }
   }

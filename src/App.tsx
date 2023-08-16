@@ -1,14 +1,14 @@
 import GameHeader from "./components/GameHeader/GameHeader";
-import GameBoard from "./components/GameBoard/GameBoard";
 import HowToPlay from "./components/HowToPlay/HowToPlay";
 
 import "./App.scss";
+import GameOptions from "./components/GameOptions/GameOptions";
 
 function App() {
   return (
     <div className="App">
       <GameHeader />
-      <GameBoard />
+      <GameOptions />
       <HowToPlay />
     </div>
   );
