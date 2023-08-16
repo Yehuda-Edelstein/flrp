@@ -3,16 +3,16 @@ import "./GameOver.scss";
 
 interface IGameOverProps {
   didWin: boolean;
+  newGame: () => void;
   count: number;
   outOf: number;
-  setStartNewGame: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const GameOver: FunctionComponent<IGameOverProps> = ({
   didWin,
+  newGame,
   count: score,
   outOf,
-  setStartNewGame,
 }) => {
   const [showModal, setShowModal] = useState(true);
   return (
@@ -36,7 +36,7 @@ const GameOver: FunctionComponent<IGameOverProps> = ({
               <span>congrats</span>
             </>
           )}
-          <div onClick={() => setStartNewGame(true)} className="gNewGame">
+          <div onClick={() => newGame()} className="gNewGame">
             play again
           </div>
           <span className="viewBoard" onClick={() => setShowModal(false)}>
@@ -44,7 +44,7 @@ const GameOver: FunctionComponent<IGameOverProps> = ({
           </span>
         </>
       ) : (
-        <div onClick={() => setStartNewGame(true)} className="showModal">
+        <div onClick={() => newGame()} className="showModal">
           new game
         </div>
       )}
