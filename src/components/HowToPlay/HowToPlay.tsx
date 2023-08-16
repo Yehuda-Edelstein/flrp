@@ -11,7 +11,7 @@ const HowToPlay: FunctionComponent = () => {
       <br /> */}
       <div>
         <span>how to play:</span> when moving horizontally or vertically you
-        skip two squares. on diagonals you skip one. fill all 100 squares.
+        skip two squares. on diagonals you skip one. fill all the squares.
       </div>
       <br />
       <div>if you're still confused just follow the pink.</div>
